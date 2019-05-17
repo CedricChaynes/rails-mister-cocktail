@@ -1,10 +1,11 @@
 class CocktailsController < ApplicationController
+  before_action :set_cocktail, only: %i[show]
+
   def index
     @cocktails = Cocktail.all
   end
 
   def show
-    @cocktail = Cocktail.find(params[:id])
   end
 
   def new
@@ -12,28 +13,24 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    # @cocktail = cocktail.new(cocktail_params)
-    # @cocktail.save
     @cocktail = Cocktail.new(cocktail_params)
-
-    respond_to do |format|
-      if @cocktail.save
-        format.html { redirect_to @cocktail, notice: 'Cocktail was successfully created.' }
-        format.json { render :show, status: :created, location: @cocktail }
-      else
-        format.html { render :new }
-        format.json { render json: @cocktail.errors, status: :unprocessable_entity }
-      end
+    if @cocktail.save
+      redirect_to cocktail_path(@cocktail)
+    else
+      render :new
     end
+  end
+
+  def destroy
   end
 
   private
 
-  def cocktail_params
-    params.require(:cocktail).permit(:name)
-  end
-
   def set_cocktail
     @cocktail = Cocktail.find(params[:id])
+  end
+
+  def cocktail_params
+    params.require(:cocktail).permit(:name)
   end
 end

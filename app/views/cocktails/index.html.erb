@@ -1,7 +1,33 @@
-<h1>Cocktails list</h1>
+<%= render 'navbar', cocktail: @cocktail %>
 
-<% @cocktails.each do |cocktail| %>
-<h2> <%= link_to cocktail.name, cocktail %> </h2>
-<% end %>
+<ul>
+  <% @cocktails.each do |cocktail| %>
+    <li><%= link_to cocktail.name, cocktail %></li>
+  <% end %>
+</ul>
 
-<%= link_to 'New Cocktail', cocktails_new_path %>
+<%= link_to 'Add a new cocktail', cocktails_new_path %>
+
+<div class="homeGrid__item  homeGrid__item--0    homeGrid__item--small" data-colorhome="#04a0c5">
+  <a class="homeGrid__product" href="https://shop.antoinecorbineau.com/products/ile-dyeu/">
+  <img src="https://shop.antoinecorbineau.com/wp-content/uploads/iledyeu_1200-1000x687.png">
+  <div class="homeGrid__sticker" style="background-color:;color:">
+    <div>
+    </div>
+  </div>
+  </a>
+  <div class="homeGrid__hover">
+    <svg class="svg" width="458" height="799" viewBox="0 0 458 799" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 275v524h458V0c-31.156116 16.800674-74.822783 29.800674-131 39-84.265826 13.798989-120.366108 138.435504-185 143-43.0892615 3.042997-90.4225948 34.042997-142 93z" fill="#04a0c5" fill-rule="evenodd"/>
+    </svg>
+    <div>
+      <div>Île d&#8217;Yeu</div>
+      <div>
+        <span class="woocommerce-Price-amount amount">30,00
+          <span class="woocommerce-Price-currencySymbol">&euro;</span>
+        </span>
+      </div>
+    </div>
+    <div>Discover</div>
+  </div>
+</div>
